@@ -6,15 +6,12 @@ export const loginFormSchema = z.object({
   password: z.string().min(6, { message: "비밀번호는 최소 6자 이상이어야 합니다." }),
 });
 
-// TypeScript 타입 자동 생성
 export type TLoginForm = z.infer<typeof loginFormSchema>;
 
 // 기본 회원가입 정보 스키마
 const signupUserBaseSchema = z.object({
-  name: z
-    .string()
-    .min(2, { message: "이름은 2자 이상이어야 합니다." })
-    .regex(/^[가-힣a-zA-Z\s]+$/, { message: "올바른 이름 형식이 아닙니다" }),
+  name: z.string().min(2, { message: "이름은 2자 이상이어야 합니다." }),
+  // .regex(/^[가-힣a-zA-Z\s]+$/, { message: "올바른 이름 형식이 아닙니다" }),
   companyCode: z.string().min(5, { message: "올바른 회사 코드를 입력해주세요" }),
   phoneNumber: z.string().regex(/^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/, {
     message: "올바른 전화번호 형식이 아닙니다 (예: 010-1234-5678)",
@@ -25,7 +22,6 @@ export const signupFormSchema = loginFormSchema
   .merge(signupUserBaseSchema)
   .extend({
     confirmPW: z.string().min(1, { message: "비밀번호 확인을 입력해주세요" }),
-    companyCode: z.string().min(5, { message: "올바른 회사 코드를 입력해주세요" }),
   })
   .refine(data => data.password === data.confirmPW, {
     message: "비밀번호가 일치하지 않습니다",
@@ -37,10 +33,10 @@ export const signupUserDataSchema = signupUserBaseSchema.extend({
   id: z.string(),
 });
 
-// TypeScript 타입 생성
 export type TSignupFormData = z.infer<typeof signupFormSchema>;
 export type TSignupUserData = z.infer<typeof signupUserDataSchema>;
 
+// 로그인,회원가입 auth관련 에러
 export type TLoginResponse = {
   success: boolean;
   error?: string;
@@ -54,6 +50,7 @@ export type TSignupResponse = {
   error?: string;
 };
 
+// 직원,관리자,default
 export type TPosition = "manager" | "employee" | "";
 
 export type TJob = {
@@ -74,14 +71,6 @@ export type TCompanyInfo = {
   nightStart: number;
   payCheckDay: number;
   qrValue: string;
-};
-
-export type TSignUpResponse = {
-  success: boolean;
-  data?: {
-    userId: string;
-  };
-  error?: string;
 };
 
 // 날짜별 근무 시간 타입

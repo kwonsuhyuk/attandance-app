@@ -1,12 +1,10 @@
 import {
-  getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
+import { auth } from "@/firebase/index"; // 초기화된 auth import
 import { TLoginForm, TSignupFormData, TLoginResponse, TSignupResponse } from "../../model/index";
-
-const auth = getAuth();
 
 export async function login({ email, password }: TLoginForm): Promise<TLoginResponse> {
   try {

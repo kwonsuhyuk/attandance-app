@@ -26,7 +26,7 @@ export const PersonalInfoForm = ({ form }: IPersonalInfoFormProps) => {
         name="name"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>이름</FormLabel>
+            <FormLabel className="text-gray-700">이름</FormLabel>
             <FormControl>
               <Input {...field} autoComplete="off" />
             </FormControl>
@@ -40,7 +40,7 @@ export const PersonalInfoForm = ({ form }: IPersonalInfoFormProps) => {
         name="email"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>이메일</FormLabel>
+            <FormLabel className="text-gray-700">이메일</FormLabel>
             <FormControl>
               <Input {...field} autoComplete="off" type="email" />
             </FormControl>
@@ -59,7 +59,7 @@ export const PersonalInfoForm = ({ form }: IPersonalInfoFormProps) => {
         name="phoneNumber"
         render={({ field: { onChange, ...field } }) => (
           <FormItem>
-            <FormLabel>전화번호</FormLabel>
+            <FormLabel className="text-gray-700">전화번호</FormLabel>
             <FormControl>
               <Input
                 {...field}
@@ -79,7 +79,7 @@ export const PersonalInfoForm = ({ form }: IPersonalInfoFormProps) => {
         name="password"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>비밀번호</FormLabel>
+            <FormLabel className="text-gray-700">비밀번호</FormLabel>
             <FormControl>
               <Input type="password" {...field} />
             </FormControl>
@@ -95,7 +95,7 @@ export const PersonalInfoForm = ({ form }: IPersonalInfoFormProps) => {
         name="confirmPW"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>비밀번호확인</FormLabel>
+            <FormLabel className="text-gray-700">비밀번호확인</FormLabel>
             <FormControl>
               <Input type="password" {...field} />
             </FormControl>

@@ -30,7 +30,7 @@ export const EmployeeCompanyForm = ({
             name="companyCode"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>회사코드</FormLabel>
+                <FormLabel className="text-gray-700">회사코드</FormLabel>
                 <FormControl>
                   <Input {...field} required autoComplete="off" disabled={isCodeValid} />
                 </FormControl>

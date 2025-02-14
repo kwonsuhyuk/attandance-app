@@ -1,29 +1,23 @@
 import { Input } from "@/components/ui/input";
-import { UseFormRegister, FieldErrors } from "react-hook-form";
-import { TLoginForm } from "@/model";
+import { RefObject } from "react";
 
 interface ILoginFormProps {
-  register: UseFormRegister<TLoginForm>;
-  errors: FieldErrors<TLoginForm>;
+  emailRef: RefObject<HTMLInputElement>;
+  passwordRef: RefObject<HTMLInputElement>;
 }
 
-const LoginForm = ({ register, errors }: ILoginFormProps) => {
+const LoginForm = ({ emailRef, passwordRef }: ILoginFormProps) => {
   return (
-    <div className="space-y-4 mr-6">
-      <div className="space-y-2">
+    <div className="space-y-8">
+      <div className="space-y-3">
         <Input
           id="email"
           type="email"
           placeholder="이메일을 입력하세요"
-          {...register("email")}
+          ref={emailRef}
           aria-describedby="email-error"
           className="px-3"
         />
-        {errors.email && (
-          <p className="text-sm text-destructive" id="email-error">
-            {errors.email.message}
-          </p>
-        )}
       </div>
 
       <div className="space-y-2">
@@ -31,15 +25,10 @@ const LoginForm = ({ register, errors }: ILoginFormProps) => {
           id="password"
           type="password"
           placeholder="비밀번호를 입력하세요"
-          {...register("password")}
+          ref={passwordRef}
           aria-describedby="password-error"
           className="px-3"
         />
-        {errors.password && (
-          <p className="text-sm text-destructive" id="password-error">
-            {errors.password.message}
-          </p>
-        )}
       </div>
     </div>
   );
